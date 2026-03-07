@@ -1,0 +1,109 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+.container{
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+/* inputfields */
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.input-container input{
+    padding: 10px;
+    width: 60px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.submit-coordinates{
+    margin: 10px;
+}
+
+
+.select-1:hover{
+    background-color: #35359e;
+}
+
+.select-2:hover{
+    background-color: #9e3535;
+}
+
+.btn-group{
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+.btn{
+    border-radius: 5px;
+    background-color: #aeadb4;
+    display: flex;
+    padding: 3px 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.add-border{
+    padding: 4px;
+    border: 2px solid black;
+
+}
+.input-field{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+.input-field label{
+    margin-right: 5px;
+}
+
+.center-all{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.show-message{
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    background-color: rgb(173, 67, 67);
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 25px;
+}
+.active-rectangle-blue{
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color:  #35359e;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 25px;
+}
+.active-rectangle-red{
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color:  #9e3535;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 25px;
+}

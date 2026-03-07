@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="js/styles/styles.css">
+    <title>Colliding Rectangles</title>
+</head>
+
+<body>
+    <div class="show-message"></div>
+    <div class="active-rectangle-red">Active rectangle: Red</div>
+    <div class="active-rectangle-blue">Active rectangle: Blue</div>
+    <div class="container flex column">
+        <div class="canvas-container ">
+            <h2>SELECT RECTANGLE BELOW AND MOVE IT WITH ARROW KEYS</h2>
+            <canvas id="c"></canvas>
+            <script src="js/main.js" type="module"></script>
+        </div>
+
+        <div class="input-container">
+            <div class="select-rectangle-container  add-border center-all">
+                <div>
+
+                    <div class="btn-group">
+                        <button class="btn select-blue">Select Blue Rectangle</button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn select-red">Select Red Rectangle</button>
+                    </div>
+                </div>
+            </div>
+            <div class="add-border">
+                <div>Type values and press submit, to <br /> move Rectangle to coordinates:</div>
+                <div class="input-field">
+                    <label for="x-coordinate">X Coordinate:</label>
+                    <input id="x-coordinate" type="text" class="text">
+                </div>
+                <div class="input-field">
+                    <label for="y-coordinate">Y Coordinate:</label>
+                    <input id="y-coordinate" type="text" class="text">
+                </div>
+                <div class="center-all">
+                    <button class="btn submit-coordinates">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
