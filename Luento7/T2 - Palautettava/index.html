@@ -9,12 +9,14 @@
 </head>
 
 <body>
+    <div class="instructions-container">
+        <button class="btn instructions-btn">instructions</button>
+    </div>
     <div class="show-message"></div>
     <div class="active-rectangle-red">Active rectangle: Red</div>
     <div class="active-rectangle-blue">Active rectangle: Blue</div>
     <div class="container flex column">
         <div class="canvas-container ">
-            <h2>SELECT RECTANGLE BELOW AND MOVE IT WITH ARROW KEYS</h2>
             <canvas id="c"></canvas>
             <script src="js/main.js" type="module"></script>
         </div>
@@ -22,17 +24,30 @@
         <div class="input-container">
             <div class="select-rectangle-container  add-border center-all">
                 <div>
-
                     <div class="btn-group">
                         <button class="btn select-blue">Select Blue Rectangle</button>
                     </div>
                     <div class="btn-group">
                         <button class="btn select-red">Select Red Rectangle</button>
                     </div>
+                    <div class="btn-group">
+                        <button class="btn modify-blue">Modify Blue Rectangle</button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn modify-red">Modify Red Rectangle</button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn move-blue">Move Blue Rectangle</button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn move-red">Move Red Rectangle</button>
+                    </div>
                 </div>
             </div>
-            <div class="add-border">
-                <div>Type values and press submit, to <br /> move Rectangle to coordinates:</div>
+            <div class="add-border move-rectangle-to-container">
+                <div class="center-all">
+                    <h3>Move<span class="show-move-color"></span>Rectangle To</h3>
+                </div>
                 <div class="input-field">
                     <label for="x-coordinate">X Coordinate:</label>
                     <input id="x-coordinate" type="text" class="text">
@@ -44,6 +59,41 @@
                 <div class="center-all">
                     <button class="btn submit-coordinates">Submit</button>
                 </div>
+            </div>
+            <div class="modify-rectangle-container add-border">
+                <div class="center-all">
+                    <h3>Modify<span class="show-modify-color"></span>Rectangle</h3>
+
+                </div>
+                <form class="update-rectangle-form">
+                    <div class="form-container">
+
+                        <div class="form-input-container">
+                            <label for="left">Left:</label>
+                            <input type="number" id="left" name="left" value="10"><br>
+                        </div>
+                        <div class="form-input-container">
+                            <label for="top">Top:</label>
+                            <input type="number" id="top" name="top" value="10"><br>
+
+                        </div>
+
+                        <div class="form-input-container">
+                            <label for="width">Width:</label>
+                            <input type="number" id="width" name="width" value="100"><br>
+                        </div>
+                        <div class="form-input-container">
+                            <label for="height">Height:</label>
+                            <input type="number" id="height" name="height" value="100"><br>
+
+                        </div>
+                    </div>
+                    <div class="center-all ">
+                        <!-- <input class="submit-btn" type="submit" value="Submit"> -->
+                        <button class="submit-btn btn" type="submit">Submit</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
