@@ -30,6 +30,11 @@ document.querySelector(".select-blue").addEventListener("click", () => {
     selectActiveRectangle("blue")
 })
 
+//open the instruction pdf
+document.querySelector(".instructions-btn").addEventListener("click", () => {
+    window.open('materials/instructions.pdf', '_blank')
+})
+
 //Change selected rectangle and display the information to user on the top left corner
 document.querySelector(".select-red").addEventListener("click", () => {
     selectActiveRectangle("red")
