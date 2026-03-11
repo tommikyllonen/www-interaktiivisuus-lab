@@ -1,0 +1,29 @@
+{
+	"location": "Car stock, Lahti",
+	"cars": [
+		{
+			"brand": "Ford",
+			"model": "Kuga",
+			"color": "Blue",
+			"year": 2023
+		},
+		{
+			"brand": "Audi",
+			"model": "A6",
+			"color": "Black",
+			"year": 2019
+		},
+		{
+			"brand": "BMW",
+			"model": "530e",
+			"color": "Blue",
+			"year": 2020
+		},
+		{
+			"brand": "Mercedes Benz",
+			"model": "E220",
+			"color": "White",
+			"year": 2015
+		}
+	]
+}

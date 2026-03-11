@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <img src="" alt="" id="image">
+    <script>
+        const obj = {
+            firstName: "Tommi",
+            lastName: "Kylloenen"
+        }
+        //To string
+        const jsonObj = JSON.stringify(obj)
+
+        console.log(typeof(obj))
+        console.log(obj)
+
+        console.log(typeof(jsonObj))
+        console.log(jsonObj)
+        //To object
+        const jsonObj2 = JSON.parse(jsonObj)
+        console.log(jsonObj2)
+
+        //Object
+        const array = ["Ford", "BMW", "Fiat"]
+        //to string
+        const jsonArray = JSON.stringify(array)
+
+        console.log(array)
+        console.log(jsonArray)
+       
+        //fetch the carsinStock.json
+         fetch("carsinStock.json")
+         .then(response =>{
+            console.log(response);
+            return response.json();
+         }).then(json => {
+            console.log(json);
+            const cars = json.cars
+            cars.sort((a, b) => {
+                return a.year - b.year
+            } )
+            cars.forEach(car =>{
+                console.log(car.brand, car.model, car.year)
+            })
+         })
+
+         async function readData() {
+            const res = await fetch("carsInStock.json");
+            const obj = await res.json();
+            const  cars = obj.cars            
+            cars.sort((a,b) => {
+                return a.year - b.year
+            })
+            cars.forEach((car) => {
+                console.log(car.brand, car.model, car.year)
+            })
+         }
+         readData()
+
+         const fetchImage = async () =>{
+            const myImage = document.querySelector("#image");
+            const response = await fetch("sunflowers.jpg")
+            const blob = await response.blob()
+            myImage.src = URL.createObjectURL(blob)
+         }
+         fetchImage()
+
+
+         
+    </script>
+    
+</body>
+</html>
