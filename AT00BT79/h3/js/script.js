@@ -9,22 +9,20 @@ const data_url = "gh4g-9sfh.json"
 const toggleFullScreen = () => {
     var fullScreenExit = document.querySelector(".fullscreen-exit-button");
     var fullscreen = document.querySelector(".fullscreen-button");
-    let map = document.querySelector(".map");
+    let mapDiv = document.querySelector(".map");
 
     if (fullScreenExit.style.display === "none") {
         fullScreenExit.style.display = "block";
         fullscreen.style.display = "none";
-        map.style.height = "100vh";
-        map('map').setView([0, 0], 4);
-        map.maxZoom = 19;
-
-
+        mapDiv.style.height = "100vh";
+        mapDiv.style.width = "100%";
 
     } else {
         fullScreenExit.style.display = "none";
         fullscreen.style.display = "block";
-        map.style.height = "500px";
+        mapDiv.style.height = "500px";
     }
+    map.invalidateSize();
 }
 document.querySelector(".fullscreen-button").addEventListener("click", toggleFullScreen);
 document.querySelector(".fullscreen-exit-button").addEventListener("click", toggleFullScreen);
@@ -56,7 +54,9 @@ const getData = async () => {
     data.forEach((item) => {
         dropDate = new Date(item.year)
         const year = dropDate.getFullYear()
-        const massInKG = Number(item.mass) ? `${(item.mass / 1000).toFixed(3)} kg` : "N/A"
+        //parseFloat to remove zeros after the decimal, so the values come with max accuracy of 3 decimals and less if there are zeros at the end, BOOM!!!
+        const massInKG = Number(item.mass) ? `${parseFloat((item.mass / 1000).toFixed(3))} kg` : "Weight unkown"
+
         const iconPath = getIconPath(item.mass / 1000 ?? 0)
 
         if (item.reclat && item.reclong) {
