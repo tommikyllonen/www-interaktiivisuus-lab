@@ -28,10 +28,10 @@ document.querySelector(".fullscreen-button").addEventListener("click", toggleFul
 document.querySelector(".fullscreen-exit-button").addEventListener("click", toggleFullScreen);
 
 const getIconPath = (weight) => {
-    let iconPath = "../icons/marker-icon-blue.png"
-    if (weight > 0.5 && weight < 10) iconPath = "../icons/marker-icon-green.png";
+    let iconPath = "./icons/marker-icon-blue.png"
+    if (weight > 0.5 && weight < 10) iconPath = "./icons/marker-icon-green.png";
 
-    if (weight >= 10) iconPath = "../icons/marker-icon-red.png";
+    if (weight >= 10) iconPath = "./icons/marker-icon-red.png";
     // return blue for all other cases, even if the weight is not defined
 
     var myIcon = L.icon({
