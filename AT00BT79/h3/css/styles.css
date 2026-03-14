@@ -1,0 +1,53 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.map-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.map {
+    height: 500px;
+    /* height: 100vh; */
+
+    /* width: 100%;
+    height: 100vh; */
+
+}
+
+.center-all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.fullscreen-button,
+.fullscreen-exit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 23px;
+    width: 23px;
+    top: 20px;
+    right: 20px;
+    z-index: 500;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.fullscreen-button {
+    display: block;
+}
+
+.fullscreen-exit-button {
+    display: none;
+}
