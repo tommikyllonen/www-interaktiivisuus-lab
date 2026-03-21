@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Esimerkki</title>
+</head>
+<body>
+    <img src="kuva.svg" alt="">
+
+    <svg height="100px" width="100px">
+        <circle cx="50" cy="50" r="40" fill="red" stroke="black" stroke-width="3px"></circle>
+    </svg>
+
+    <svg height="600px" width="600px">
+        <!-- g groups svg items inside it -->
+        <g>
+            <rect x="10px" y="20px" width="50px" height="200px" fill="blue"></rect>
+            <circle cx="150" cy="50" r="40" fill="red" stroke="black" stroke-width="3px">
+            </circle>
+        </g>
+        <line x1="150", y1="150" x2="300" y2="300" stroke="green" stroke-width="3"> </line>
+        <path d="M 175 200 L 225 300 L 275 200 C 275 200 237.5 250 175 200" fill="blue "></path>
+    
+    </svg>
+    
+</body>
+</html>
