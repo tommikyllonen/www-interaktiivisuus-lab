@@ -1,0 +1,28 @@
+[
+	{
+		"name": "Helsinki",
+		"population": 591000,
+		"fill": "yellow"
+	},
+	{
+		"name": "Tampere",
+		"population": 227000,
+		"fill": "red"
+	},
+
+	{
+		"name": "Oulu",
+		"population": 199000,
+		"fill": "green"
+	},
+	{
+		"name": "Turku",
+		"population": 186000,
+		"fill": "black"
+	},
+	{
+		"name": "Lahti",
+		"population": 119000,
+		"fill": "orange"
+	}
+]
