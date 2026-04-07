@@ -52,7 +52,7 @@ blockMessages[6] = "Joki on liian syvä ylitettäväksi.";
 blockMessages[7] = "Metsä on liian tiheä kuljettavaksi.";
 blockMessages[8] = "Olet liian peloissasi mennäksesi tuohon suuntaan.";
 
-
+let lohikäärmeElossa = true;
 let mapLocation = 4;
 
 console.log(map[mapLocation]);
@@ -72,8 +72,8 @@ let playersInput = "";
 let gameMessage = "";
 
 // Pelissä olevat esineet
-let items = ["huilu", "kivi", "miekka"];
-let itemLocations = [1, 6, 8];
+let items = ["kivi"];
+let itemLocations = [6];
 let backPack = [];
 let knownItems = ["huilu", "kivi", "miekka"];
 let item = "";
@@ -113,13 +113,14 @@ function clickHandler() {
 }
 
 function playGame(isKeyboradMovement = false, keyboradDirection = "") {
+  
   // Lue pelaajan syöte
-  playersInput = isKeyboradMovement ? keyboradDirection :  input.value.toLowerCase();
+  playersInput = isKeyboradMovement ? keyboradDirection :  input.value.toLowerCase().trim();
 
   // Nollaa gamemessage ja action
   gameMessage = "";
   action = "";
-
+  item = "";
   for (let i = 0; i < actionsForPlayer.length; i++) {
     if (playersInput.indexOf(actionsForPlayer[i]) !== -1) {
       action = actionsForPlayer[i];
@@ -187,52 +188,76 @@ function playGame(isKeyboradMovement = false, keyboradDirection = "") {
 }
 
 function takeItem() {
-  //
-  const itemIndexNumber = items.indexOf(item);
+  let itemIndexNumber = items.indexOf(item);
+  if (itemIndexNumber === -1) {
+    itemIndexNumber = itemLocations.indexOf(mapLocation);
+    if (itemIndexNumber !== -1) {
+      item = items[itemIndexNumber];
+    }
+  }
+
   if (itemIndexNumber !== -1 && itemLocations[itemIndexNumber] === mapLocation) {
     gameMessage = "Poimit esineen " + item;
     backPack.push(item);
-    // Remove item from the items array and itemLocations array ( just 2 arrays for some reason, could be done with one array of objects)
     items.splice(itemIndexNumber, 1);
     itemLocations.splice(itemIndexNumber, 1);
-
   } else {
     gameMessage = "Et voi tehdä tätä toimintoa";
   }
 }
 
 function useItem() {
-  const backPackIndexNumber = backPack.indexOf(item);
+  let selectedItem = item;
+  if (backPack.length === 0) {
+    gameMessage = "Sinulla ei ole repussa mitään.";
+    return;
+  }
 
+  const backPackIndexNumber = backPack.indexOf(selectedItem);
   if (backPackIndexNumber === -1) {
     gameMessage = "Sinulla ei ole sitä mukana";
+    return;
   }
-  if (backPack.length === 0) {
-    gameMessage = "Sinulla ei ole repussa mitään. ";
-  }
-  if (backPackIndexNumber !== -1) {
-    switch (item) {
-      case "huilu":
+
+  switch (selectedItem) {
+    case "kivi":
+      if (mapLocation === 1) {
+        gameMessage = "Pudotat kiven kaivoon. Kaivosta ilmestyy huilu!";
+        backPack.splice(backPackIndexNumber, 1);
+
+        if (!items.includes("huilu") && !backPack.includes("huilu")) {
+          items.push("huilu");
+          itemLocations.push(1);
+        }
+      } else {
+        gameMessage = "Pyörittelet kiveä taskussasi.";
+      }
+      break;
+
+    case "huilu":
+      if (mapLocation === 8) {
+        gameMessage = "Soitat huilua mökissä ja miekka ilmestyy kuin tyhjästä!";
+        backPack.splice(backPackIndexNumber, 1);
+
+        if (!items.includes("miekka") && !backPack.includes("miekka")) {
+          items.push("miekka");
+          itemLocations.push(8);
+        }
+      } else {
         gameMessage = "Kaunis musiikki kaikuu ympärilläsi.";
-        break;
+      }
+      break;
 
-      case "miekka":
-        if (mapLocation === 3) {
-          gameMessage = "Heilautat miekkaa ja tapat lohikäärmeen!";
-        } else {
-          gameMessage = "Heiluttelet miekkaa tylsistyneenä...";
-        }
-        break;
-
-      case "kivi":
-        if (mapLocation === 1) {
-          gameMessage = "Pudotat kiven kaivoon.";
-          backPack.splice(backPackIndexNumber, 1);
-        } else {
-          gameMessage = "Pyörittelet kiveä taskussasi.";
-        }
-        break;
-    }
+    case "miekka":
+      if (mapLocation === 3 && lohikäärmeElossa) {
+        gameMessage = "Heilautat miekkaa ja kukistat lohikäärmeen!";
+        lohikäärmeElossa = false;
+        //vaihda kuva lohikäärmeestä, joka on kukistettu
+        images[3] = "dead-dragon.jpg";
+      } else {
+        gameMessage = "Heiluttelet miekkaa tylsistyneenä...";
+      }
+      break;
   }
 }
 

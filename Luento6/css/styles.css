@@ -55,6 +55,9 @@ img {
 .navigation-visualizer .column-1, 
 .navigation-visualizer .column-2,
 .navigation-visualizer .column-3 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 33.33%;
 	height: 100%;
     border: 1px solid black;
