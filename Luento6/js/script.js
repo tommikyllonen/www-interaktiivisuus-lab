@@ -113,13 +113,14 @@ function clickHandler() {
 }
 
 function playGame(isKeyboradMovement = false, keyboradDirection = "") {
+  
   // Lue pelaajan syöte
   playersInput = isKeyboradMovement ? keyboradDirection :  input.value.toLowerCase();
 
   // Nollaa gamemessage ja action
   gameMessage = "";
   action = "";
-
+  item = "";
   for (let i = 0; i < actionsForPlayer.length; i++) {
     if (playersInput.indexOf(actionsForPlayer[i]) !== -1) {
       action = actionsForPlayer[i];
@@ -187,15 +188,19 @@ function playGame(isKeyboradMovement = false, keyboradDirection = "") {
 }
 
 function takeItem() {
-  //
-  const itemIndexNumber = items.indexOf(item);
+  let itemIndexNumber = items.indexOf(item);
+  if (itemIndexNumber === -1) {
+    itemIndexNumber = itemLocations.indexOf(mapLocation);
+    if (itemIndexNumber !== -1) {
+      item = items[itemIndexNumber];
+    }
+  }
+  
   if (itemIndexNumber !== -1 && itemLocations[itemIndexNumber] === mapLocation) {
     gameMessage = "Poimit esineen " + item;
     backPack.push(item);
-    // Remove item from the items array and itemLocations array ( just 2 arrays for some reason, could be done with one array of objects)
     items.splice(itemIndexNumber, 1);
     itemLocations.splice(itemIndexNumber, 1);
-
   } else {
     gameMessage = "Et voi tehdä tätä toimintoa";
   }
