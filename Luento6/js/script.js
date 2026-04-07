@@ -72,10 +72,10 @@ let playersInput = "";
 let gameMessage = "";
 
 // Pelissä olevat esineet
-let items = ["huilu", "kivi", "miekka"];
-let itemLocations = [1, 6, 8];
+let items = ["kivi"];
+let itemLocations = [6];
 let backPack = [];
-let knownItems = ["huilu", "kivi", "miekka"];
+let knownItems = ["kivi"];
 let item = "";
 
 // Pelaajan käytössä olevat toiminnot
@@ -115,7 +115,7 @@ function clickHandler() {
 function playGame(isKeyboradMovement = false, keyboradDirection = "") {
   
   // Lue pelaajan syöte
-  playersInput = isKeyboradMovement ? keyboradDirection :  input.value.toLowerCase();
+  playersInput = isKeyboradMovement ? keyboradDirection :  input.value.toLowerCase().trim();
 
   // Nollaa gamemessage ja action
   gameMessage = "";
@@ -195,7 +195,7 @@ function takeItem() {
       item = items[itemIndexNumber];
     }
   }
-  
+
   if (itemIndexNumber !== -1 && itemLocations[itemIndexNumber] === mapLocation) {
     gameMessage = "Poimit esineen " + item;
     backPack.push(item);
@@ -216,28 +216,43 @@ function useItem() {
     gameMessage = "Sinulla ei ole repussa mitään. ";
   }
   if (backPackIndexNumber !== -1) {
-    switch (item) {
-      case "huilu":
+  switch (item) {
+    case "kivi":
+      if (mapLocation === 1) {
+        gameMessage = "Pudotat kiven kaivoon. Kaivosta ilmestyy huilu!";
+        backPack.splice(backPackIndexNumber, 1);
+
+        if (!items.includes("huilu") && !backPack.includes("huilu")) {
+          items.push("huilu");
+          itemLocations.push(1);
+        }
+      } else {
+        gameMessage = "Pyörittelet kiveä taskussasi.";
+      }
+      break;
+
+    case "huilu":
+      if (mapLocation === 8) {
+        gameMessage = "Soitat huilua. Mökistä löydät miekan!";
+
+        if (!items.includes("miekka") && !backPack.includes("miekka")) {
+          items.push("miekka");
+          itemLocations.push(8);
+        }
+      } else {
         gameMessage = "Kaunis musiikki kaikuu ympärilläsi.";
-        break;
+      }
+      break;
 
-      case "miekka":
-        if (mapLocation === 3) {
-          gameMessage = "Heilautat miekkaa ja tapat lohikäärmeen!";
-        } else {
-          gameMessage = "Heiluttelet miekkaa tylsistyneenä...";
-        }
-        break;
-
-      case "kivi":
-        if (mapLocation === 1) {
-          gameMessage = "Pudotat kiven kaivoon.";
-          backPack.splice(backPackIndexNumber, 1);
-        } else {
-          gameMessage = "Pyörittelet kiveä taskussasi.";
-        }
-        break;
-    }
+    case "miekka":
+      if (mapLocation === 3) {
+        gameMessage = "Heilautat miekkaa ja kukistat lohikäärmeen!";
+      } else {
+        gameMessage = "Heiluttelet miekkaa tylsistyneenä...";
+      }
+      break;
+  }
+ 
   }
 }
 
