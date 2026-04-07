@@ -52,7 +52,7 @@ blockMessages[6] = "Joki on liian syvä ylitettäväksi.";
 blockMessages[7] = "Metsä on liian tiheä kuljettavaksi.";
 blockMessages[8] = "Olet liian peloissasi mennäksesi tuohon suuntaan.";
 
-
+let lohikäärmeElossa = true;
 let mapLocation = 4;
 
 console.log(map[mapLocation]);
@@ -75,7 +75,7 @@ let gameMessage = "";
 let items = ["kivi"];
 let itemLocations = [6];
 let backPack = [];
-let knownItems = ["kivi"];
+let knownItems = ["huilu", "kivi", "miekka"];
 let item = "";
 
 // Pelaajan käytössä olevat toiminnot
@@ -207,16 +207,19 @@ function takeItem() {
 }
 
 function useItem() {
-  const backPackIndexNumber = backPack.indexOf(item);
+  let selectedItem = item;
+  if (backPack.length === 0) {
+    gameMessage = "Sinulla ei ole repussa mitään.";
+    return;
+  }
 
+  const backPackIndexNumber = backPack.indexOf(selectedItem);
   if (backPackIndexNumber === -1) {
     gameMessage = "Sinulla ei ole sitä mukana";
+    return;
   }
-  if (backPack.length === 0) {
-    gameMessage = "Sinulla ei ole repussa mitään. ";
-  }
-  if (backPackIndexNumber !== -1) {
-  switch (item) {
+
+  switch (selectedItem) {
     case "kivi":
       if (mapLocation === 1) {
         gameMessage = "Pudotat kiven kaivoon. Kaivosta ilmestyy huilu!";
@@ -233,7 +236,8 @@ function useItem() {
 
     case "huilu":
       if (mapLocation === 8) {
-        gameMessage = "Soitat huilua. Mökistä löydät miekan!";
+        gameMessage = "Soitat huilua mökissä ja miekka ilmestyy kuin tyhjästä!";
+        backPack.splice(backPackIndexNumber, 1);
 
         if (!items.includes("miekka") && !backPack.includes("miekka")) {
           items.push("miekka");
@@ -245,14 +249,15 @@ function useItem() {
       break;
 
     case "miekka":
-      if (mapLocation === 3) {
+      if (mapLocation === 3 && lohikäärmeElossa) {
         gameMessage = "Heilautat miekkaa ja kukistat lohikäärmeen!";
+        lohikäärmeElossa = false;
+        //vaihda kuva lohikäärmeestä, joka on kukistettu
+        images[3] = "dead-dragon.jpg";
       } else {
         gameMessage = "Heiluttelet miekkaa tylsistyneenä...";
       }
       break;
-  }
- 
   }
 }
 
