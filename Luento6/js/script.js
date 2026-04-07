@@ -90,6 +90,20 @@ window.addEventListener("keydown", (e) => {
     else if (e.code == "ArrowRight") playGame(true, "itä");
 })
 
+//Handle instructions
+const instructionsButton = document.querySelector(".instructions-button");
+const closeButton = document.querySelector(".close-button");
+const instructions = document.querySelector(".instructions");
+
+instructionsButton.addEventListener("click", () => {
+  instructions.style.display = "block";
+  instructionsButton.style.display = "none";
+});
+
+closeButton.addEventListener("click", () => {
+  instructions.style.display = "none";
+  instructionsButton.style.display = "block";
+});
 
 render();
 
