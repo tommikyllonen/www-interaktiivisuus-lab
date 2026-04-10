@@ -252,7 +252,7 @@ function useItem() {
       if (mapLocation === 3 && lohikäärmeElossa) {
         gameMessage = "Heilautat miekkaa ja kukistat lohikäärmeen!";
         lohikäärmeElossa = false;
-        //vaihda kuva lohikäärmeestä, joka on kukistettu
+        //vaihda kuolleen lohikäärmeen kuvaan, BOOM!!! 
         images[3] = "dead-dragon.jpg";
       } else {
         gameMessage = "Heiluttelet miekkaa tylsistyneenä...";
