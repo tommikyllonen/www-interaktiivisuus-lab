@@ -1,0 +1,80 @@
+{
+"-La1s8lBjHXkiLkRLvCb" : {
+"Measures" : {
+"AirPressure" : "989,0",
+"Humidity" : "28,8",
+"Temp" : "30,7",
+"Timestamp" : "Fri Mar 15 21:42:29 2019"
+}
+},
+"-La1tIGoGQGfiPn7iQUa" : {
+"Measures" : {
+"AirPressure" : "989,0",
+"Humidity" : "28,6",
+"Temp" : "30,5",
+"Timestamp" : "Fri Mar 15 21:47:32 2019"
+}
+H4 – DATAN VISUALISOINTI
+Lataa Moodlesta itsellesi tiedosto measures.json. Json-tiedostoon on tallennettu
+työhuoneeni ympäristötietoja keväältä 2019 noin 3-4 kuukauden ajalta 5 minuutin
+intervallilla. Tiedosto sisältää yhteensä 9507 Measures-tietuetta. Lämpötila-arvo ei tosin
+pidä paikkaansa viallisesta sensorista johtuen. En minä oikeasti noin kuumassa työskentele.
+J
+Tiedoston alku näyttää alla olevan kuvan mukaiselta:
+Arvosana 1.
+Hae tunnilla tehdyistä esimerkeistä se, jossa luetaan json-tiedosto sisään ja lue
+measures.json sisään vastaavalla tavalla. Datan rakenne poikkeaa hieman siitä mitä tunnilla
+tehtiin, joten se vaatii hieman työstämistä. Jotta saat datasta helpommin käsiteltävää se
+kannattaa lukea uuteen taulukkomuuttujaan (alla olevassa esimerkissä käytän nimeä
+dataArray). Esimerkissä käydään läpi koko datajoukko ja kirjoitetaan yksi kerrallaan
+dataArray-taulukkoon.
+Datan ensimmäinen
+measures-objekti
+(sama kuin ed. sivun
+json-koodissa)
+ const dataArray = [];
+ for (let k in data) {
+ const measure = data[k].Measures;
+ dataArray.push(measure);
+ }
+Voit tutkia mitä taulukkoon syntyi console.logilla eli console.log(dataArray) for
+loopin jälkeen. Tehtävä h4 on läpäisty arvosanalla 1, kun selaimen konsolista löytyy
+tulostettuna tuo juuri syntynyt dataArray.
+Arvosana 2.
+Etsi D3:n max- ja min-funktioilla kunkin suureen (Airpressure, Temp, Humidity) maksimi- ja
+minimiarvo ja kirjoita ne konsoliin console.log:illa.
+Vinkki: luennoilla tehdyssä esimerkissä tehtiin näin
+ const min = d3.min(dataset, d => d.count);
+ const max = d3.max(dataset, d => d.count);
+Nyt vain etsitään dataArray:sta, ei datasetista. Ja etsittävä ei ole d.count vaan d.Airpressure,
+d.Temp tai d.Humidity. Huomaa myös, että data on string-muodossa ja siinä on käytetty
+pilkkua pisteen sijaan, joten esim ilmanpaineen tapauksessa:
+d => parseFloat(d.AirPressure.replace(",",".")));
+Kun saat tulostettua koodin löytämät minimit ja maksimit console-välilehdelle, on tämän
+harjoituksen arvosana 2.
+xAxisText.each(function(_,i){
+if(i%4 !== 0) d3.select(this).remove();
+});
+Arvosana 3.
+Piirrä yhdestä valitsemastasi suureesta pylväskaavio. Tähän oikeasti parempi olisi
+viivakaavio, mutta koska sitä ei käyty kurssilla en sitä vaadi. Esimerkki tähän toki löytyy
+D3js.org-osoitteesta. Tämä tehtävä on aika suoraviivaisesti saman kaltainen kuin tunnilla
+tehty tehtävä.
+Dataa on varmaankin liikaa pylväskaavioon koska datapisteitä tulee yli 9000. Voit tehdä
+alkuperäisestä tiedostosta kopion ja ottaa mukaan esim. 100 ensimmäistä tietuetta.
+Katkaise esim. riviltä 801 ja poista pilkku ja lisää vielä loppuun yksi aaltosulku, jotta aloittava
+aaltosulku riviltä yksi tulee suljettua.
+Arvosana 4.
+Kokeile piirtää myös kaksi muuta kuvaajaa jäljelle jääneille arvoille. (Tämä seuraava ei ole
+pakollinen: Vertaa ilmankosteuden ja lämpötilan riippuvuutta. Voiko datasta päätellä onko
+huoneessa yöpynyt ihmisiä, sillä se toimii myös vierashuoneena. Tämä tietysti riippuu
+siitä, osuuko datan otanta hetkeen, jolloin huoneessa on yövytty.)
+Arvosana 5.
+Vaihda korkeimman ja matalimman arvon pylvään väriä (korkeinta ja matalinta arvoa
+vastaavia pylväitä voi olla useita). Esimerkiksi siten että perusväri on vihreä, matalin sininen
+ja korkein punainen.
+Tässä voisi auttaa esim google-haku ” d3.js coloring highest value bar”
+Muita vinkkejä
+Liian tiheän x-akselin tekstien harventaminen (jättää joka 4. tekstin jäljelle):
+Koodiesimerkeissähän valitaan jo kertaalleen x-akselin tekstit rotatea varten. Tämän
+valinnan muuttaminen muuttujaksi xAxisText voisi olla lähtökohtana tälle…
