@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekstipohjainen peli</title>
+    <link rel="stylesheet" href="css/styles.css" class="href">
+</head>
+
+<body>
+    <button class="instructions-button">?</button>
+    <div class="instructions">
+        <button class="close-button">X</button>
+        <h2>Ohjeet</h2>
+        <p>Liiku nuolinäppäimillä. tai kirjoittamalla tekstiruutuun joku pääilmansuunnista.</p>
+        <p><b>Poimi</b> esine kirjottamalla poimi + esineen nimi. esim: poimi miekka</p>
+        <p><b>Käytä</b> esine kirjottamalla käytä + esineen nimi. esim: käytä miekka</p>
+        <p><b>Jätä</b> esine kirjottamalla jätä + esineen nimi. esim: jätä miekka</p>
+        <p>Vasemmassa yläkulmassa näet ruudukon, joka näyttää nykyisen sijaintisi.</p>
+        <h2>Kuinka läpäistä peli</h2>
+        <p>Kerää kivi joelta (ruutu 6) ja pudota se kaivoon (ruutu 1). Huilu ilmestyy</p>
+        <p>poimi huilu</p>
+        <p>Käytä huilua mökissä (ruutu 8) ja löydät miekan</p>
+        <p>poimi miekka</p>
+        <p>Mene lohikäärmeen luo (ruutu 3) ja käytä miekkaa lohikäärmeeseen</p>
+        <p>LOHIKÄÄRMEEN KUVA VAIHTUU KUOLLEESEEN</p>
+
+    </div>
+    <div class="navigation-visualizer">
+        <div class="row-1">
+            <div class="column-1 nav-box-1"></div>
+            <div class="column-2 nav-box-2"></div>
+            <div class="column-3 nav-box-3"></div>
+        </div>
+        <div class="row-2">
+            <div class="column-1 nav-box-4"></div>
+            <div class="column-2 nav-box-5"></div>
+            <div class="column-3 nav-box-6"></div>
+        </div>
+        <div class="row-3">
+            <div class="column-1 nav-box-7"></div>
+            <div class="column-2 nav-box-8"></div>
+            <div class="column-3 nav-box-9"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container-inner">
+            <img id="image" src="" alt="">
+            <input id="input" placeholder="Mitä haluat tehdä?" type="text">
+            <button id="button">Vastaa</button>
+            <p id="output"></p>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

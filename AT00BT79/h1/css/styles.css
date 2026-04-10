@@ -1,0 +1,113 @@
+.output {
+	font-weight: bold;
+}
+body {
+	height: 100vh;
+	display: flex;
+	background-color: grey;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.container {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)),
+		url(../images/background.jpg);
+	background-size: cover;
+	width: 500px;
+	height: 500px;
+}
+.container-inner {
+	width: 302px;
+	margin: 0 auto;
+	text-align: center;
+}
+p {
+	color: #fff;
+}
+img {
+	margin: 40px auto;
+	display: block;
+	width: 300px;
+	height: 267px;
+	border: 1px solid black;
+}
+.navigation-visualizer {
+	position: absolute;
+	display:flex;
+	flex-direction: column;	
+	top: 50px;
+	left: 50px;
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+	box-sizing: border-box;
+}
+
+.navigation-visualizer .row-1,
+.navigation-visualizer .row-2,
+.navigation-visualizer .row-3 {
+	display: flex;
+	width: 100%;
+	height: 33.33%;
+	box-sizing: border-box;
+}
+
+.navigation-visualizer .column-1, 
+.navigation-visualizer .column-2,
+.navigation-visualizer .column-3 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 33.33%;
+	height: 100%;
+    border: 1px solid black;
+	box-sizing: border-box;
+	
+}
+
+.instructions-button {
+	position: absolute;
+	font-size: xx-large;
+	/* color: ; */
+	top: 30px;
+	right: 30px;
+	/* width: 20px;
+	height: 20px; */
+	border-radius: 20%;
+	border: 1px solid rgb(138, 11, 11);
+	box-sizing: border-box;
+	background-color: rgb(138, 62, 62);
+}
+.instructions-button:hover {
+	cursor:pointer;
+	background-color: rgb(120, 62, 80);
+}
+.instructions {
+	margin-top: 0;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	width: 300px;
+	background-color:rgb(83, 82, 82);
+	padding: 0 20px 20px 20px;
+	border: solid rgb(29, 28, 28) 2px;
+	border-radius: 10px;
+	display: none; 
+}
+.instructions h2 {
+	font-family: Arial;
+	color: white;
+}
+
+.instructions .close-button {
+	font-family: Arial;
+	background-color: transparent;
+	font-size: large;
+	font-weight: bold;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border: none;
+	color: rgb(185, 73, 73);
+	cursor: pointer;
+}
